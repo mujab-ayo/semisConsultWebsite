@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Service from "../components/Service";
@@ -8,8 +8,12 @@ import Faq from "../components/Faq";
 import Quote from "../components/Quote";
 import Footer from "../components/Footer";
 
+import { motion } from "framer-motion";
+
 
 const Home = () => {
+
+
   const brandLogos = [
     "brand-logo-1.svg",
     "brand-logo-2.svg",
@@ -28,7 +32,15 @@ const Home = () => {
         <h2 className="text-primaryColor font-medium text-lg dark:text-white">
           Our Partners
         </h2>
-        <div className="flex space-x-16 ">
+        <motion.div
+          initial={ { x: '100%' } }
+          animate={ { x: "-100%" } }
+          transition={ {
+            repeat: Infinity,
+            ease: 'linear',
+            duration: 15
+          }}
+          className="flex space-x-16 ">
           {brandLogos.map((logo, index) => (
             <img
               src={`/images/${logo}`}
@@ -37,7 +49,7 @@ const Home = () => {
               className="dark:invert"
             />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className=" flex flex-col justify-center items-center gap-10 px-6 lg:px-20">
